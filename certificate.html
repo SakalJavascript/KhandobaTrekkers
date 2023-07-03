@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Certificate</title>
+  <style>
+    #canvas {
+    
+      background-repeat: no-repeat;
+      background-size: cover;
+	  height:1650px;
+	  width:1275px;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="canvas"></canvas>
+  <script>
+    // Get the canvas element
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+
+    // Load the image
+    var image = new Image();
+	
+    image.onload = function() {
+      // Set the canvas dimensions to match the image size
+      canvas.width = image.width;
+      canvas.height = image.height;
+
+      // Draw the image on the canvas
+      context.drawImage(image, 0, 0);
+      
+      // Add text to the image
+      context.font = '25px Arial';
+	  
+      context.fillStyle = 'Red';
+      context.fillText('SAKAL SUNIL PATIL', 500, 500);
+	   image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");  // here is the most important part because if you dont replace you will get a DOM 18 exception.
+
+
+		window.location.href=image;
+
+
+    };
+
+    // Set the source of the image
+    image.src = 'certificate.jpg';
+	
+
+
+  </script>
+</body>
+</html>
